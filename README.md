@@ -6,3 +6,4 @@
 - 3 -> 3. Recycler View
 - 4 -> 4. Intent Parcelable
 - 5 -> 5. Splash Screen, Icon App, Fix Style
+- 6 -> 6. Clean Code
