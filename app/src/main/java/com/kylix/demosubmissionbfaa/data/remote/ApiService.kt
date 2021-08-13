@@ -11,27 +11,27 @@ interface ApiService {
 
     //endpoint: BASE_URL + Value GET (https://api.github.com/search/users)
     @GET("search/users")
-    fun searchUsers (
+    suspend fun searchUsers (
         @Query("q")
         query: String
-    ): Call<SearchResponse>
+    ): SearchResponse
 
     //endpoint: BASE_URL + Value GET (https://api.github.com/users/{username})
     @GET("users/{username}")
-    fun getDetailUser (
+    suspend fun getDetailUser (
         @Path("username")
         username: String
-    ): Call<User>
+    ): User
 
     @GET("users/{username}/followers")
-    fun getUserFollowers (
+    suspend fun getUserFollowers (
         @Path("username")
         username: String
-    ): Call<List<User>>
+    ): List<User>
 
     @GET("users/{username}/following")
-    fun getUserFollowing (
+    suspend fun getUserFollowing (
         @Path("username")
         username: String
-    ): Call<List<User>>
+    ): List<User>
 }

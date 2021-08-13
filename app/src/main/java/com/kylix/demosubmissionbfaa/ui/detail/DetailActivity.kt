@@ -13,9 +13,13 @@ import com.kylix.demosubmissionbfaa.ui.adapter.FollowPagerAdapter
 import com.kylix.demosubmissionbfaa.util.Constanta
 import com.kylix.demosubmissionbfaa.util.Constanta.EXTRA_USER
 import com.kylix.demosubmissionbfaa.util.Constanta.TAB_TITLES
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class DetailActivity : AppCompatActivity() {
 
@@ -30,17 +34,15 @@ class DetailActivity : AppCompatActivity() {
         val username = intent.getStringExtra(EXTRA_USER)
 
         val retrofit = RetrofitService.create()
-        retrofit.getDetailUser(username.toString()).enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                user = response.body()
+
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val user = retrofit.getDetailUser(username.toString())
                 setView(user)
+            } catch (e: Exception) {
+                Log.e(this.toString(), e.message.toString())
             }
-
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                Log.e(this.toString(), t.message.toString())
-            }
-
-        })
+        }
 
         val pageAdapter = FollowPagerAdapter(this, username.toString())
 
@@ -58,6 +60,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setView(user: User?) {
+
         detailBinding.apply {
             tvDetailNumberOfRepos.text = user?.repository.toString()
             tvDetailNumberOfFollowers.text = user?.follower.toString()

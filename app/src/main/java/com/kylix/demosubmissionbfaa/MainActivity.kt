@@ -9,6 +9,9 @@ import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
 import com.kylix.demosubmissionbfaa.databinding.ActivityMainBinding
 import com.kylix.demosubmissionbfaa.model.SearchResponse
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,20 +50,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun startSearching(userAdapter: UserAdapter) {
+    private fun startSearching(userAdapter: UserAdapter) {
         val retrofit = RetrofitService.create()
-        retrofit.searchUsers(userQuery).enqueue(object : Callback<SearchResponse> {
-            override fun onResponse(
-                call: Call<SearchResponse>,
-                response: Response<SearchResponse>
-            ) {
-                response.body()?.items?.let { userAdapter.setAllData(it) }
-            }
 
-            override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
-                Log.e(this.toString(), t.message.toString())
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val list = retrofit.searchUsers(userQuery)
+                userAdapter.setAllData(list.items)
+            } catch (e: Exception) {
+                Log.e(this.toString(), e.message.toString())
             }
-
-        })
+        }
     }
 }

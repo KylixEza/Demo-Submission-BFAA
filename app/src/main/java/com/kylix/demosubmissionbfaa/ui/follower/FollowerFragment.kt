@@ -1,6 +1,7 @@
 package com.kylix.demosubmissionbfaa.ui.follower
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,9 @@ import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
 import com.kylix.demosubmissionbfaa.databinding.FollowerFragmentBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,17 +44,14 @@ class FollowerFragment(private val username: String) : Fragment() {
         }
 
         val retrofit = RetrofitService.create()
-        retrofit.getUserFollowers(username).enqueue(object : Callback<List<User>> {
-            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                response.body()?.let { userAdapter.setAllData(it) }
+
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val list = retrofit.getUserFollowers(username)
+                userAdapter.setAllData(list)
+            } catch (e: Exception) {
+                Log.e(this.toString(), e.message.toString())
             }
-
-            override fun onFailure(call: Call<List<User>>, t: Throwable) {
-
-            }
-
-        })
-
+        }
     }
-
 }
