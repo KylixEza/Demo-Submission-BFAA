@@ -10,21 +10,16 @@ import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
 import com.kylix.demosubmissionbfaa.databinding.ActivityDetailBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.FollowPagerAdapter
-import com.kylix.demosubmissionbfaa.util.Constanta
 import com.kylix.demosubmissionbfaa.util.Constanta.EXTRA_USER
 import com.kylix.demosubmissionbfaa.util.Constanta.TAB_TITLES
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.lang.Exception
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var detailBinding: ActivityDetailBinding
-    private var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -11,14 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.demosubmissionbfaa.R
 import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
 import com.kylix.demosubmissionbfaa.databinding.FollowerFragmentBinding
-import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class FollowingFragment(private val username: String) : Fragment() {
 

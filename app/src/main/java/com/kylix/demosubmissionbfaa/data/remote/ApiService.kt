@@ -2,7 +2,6 @@ package com.kylix.demosubmissionbfaa.data.remote
 
 import com.kylix.demosubmissionbfaa.model.SearchResponse
 import com.kylix.demosubmissionbfaa.model.User
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

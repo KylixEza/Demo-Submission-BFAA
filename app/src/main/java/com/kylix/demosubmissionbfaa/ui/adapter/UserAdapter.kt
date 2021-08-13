@@ -10,7 +10,6 @@ import com.kylix.demosubmissionbfaa.databinding.ItemListUserBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.detail.DetailActivity
 import com.kylix.demosubmissionbfaa.util.Constanta.EXTRA_USER
-import retrofit2.Response
 
 class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
