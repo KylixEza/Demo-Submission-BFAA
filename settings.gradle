@@ -9,4 +9,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Demo Submission BFAA"
 include ':app'
-include ':rupiah-currency'
