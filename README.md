@@ -13,3 +13,4 @@ Repository ini dibuat untuk membantu teman teman peserta IDCamp 2021 Learning Pa
 - 9 -> 9. Retrofit2(Moshi) with Retrofit Callback
 - 9-2 -> 9-2. Retrofit(Moshi) with Coroutine Flow
 - 10 -> Responsive UI (Retrofit Callback)
+- 10-2 -> Responsive UI (Coroutine Flow)
