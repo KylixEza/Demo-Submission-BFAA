@@ -16,3 +16,5 @@ Repository ini dibuat untuk membantu teman teman peserta IDCamp 2021 Learning Pa
 - 10-2 -> Responsive UI (Coroutine Flow)
 - 11 -> Design Pattern MVVM (Retrofit Callback)
 - 12 -> Localization
+- 13 -> Live Data (MutableLiveData)
+- 13-2 -> Live Data (Coroutine Flow)
