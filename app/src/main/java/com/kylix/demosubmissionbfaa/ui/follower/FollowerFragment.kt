@@ -67,7 +67,6 @@ class FollowerFragment: Fragment(), ViewStateCallback<List<User>> {
                 is Resource.Success -> it.data?.let { it1 -> onSuccess(it1) }
             }
         })
-
     }
 
     override fun onSuccess(data: List<User>) {

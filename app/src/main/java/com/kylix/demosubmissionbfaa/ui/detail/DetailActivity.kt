@@ -47,7 +47,6 @@ class DetailActivity : AppCompatActivity(), ViewStateCallback<User?> {
                 is Resource.Success -> onSuccess(it.data)
             }
         })
-
         val pageAdapter = FollowPagerAdapter(this, username.toString())
 
         detailBinding.apply {
