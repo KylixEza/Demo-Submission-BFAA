@@ -18,3 +18,5 @@ Repository ini dibuat untuk membantu teman teman peserta IDCamp 2021 Learning Pa
 - 12 -> Localization
 - 13 -> Live Data (MutableLiveData)
 - 13-2 -> Live Data (Coroutine Flow)
+- 14 -> Room with suspend coroutines
+- 15 -> DataStore
